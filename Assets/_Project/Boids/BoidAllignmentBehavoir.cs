@@ -26,11 +26,12 @@ public class BoidAllignmentBehavoir : MonoBehaviour
 
         foreach (var boid in listOfOtherBoids.Where(b => b != baseBoid))
         {
-            var diff = boid.transform.position - this.transform.position;
-            if (diff.magnitude < radius)
+            var diff = (boid.transform.position - this.transform.position).sqrMagnitude;
+            
+            if (diff < radius && diff > 0)
             {
-                average += boid.velocity;
-                numFound += 1;
+                average += boid.transform.forward;
+                numFound ++;
             }
         }
 
@@ -41,7 +42,6 @@ public class BoidAllignmentBehavoir : MonoBehaviour
             //move everything towards that average
             baseBoid.velocity += Vector3.Lerp(baseBoid.velocity, average, Time.deltaTime);
         }
-
-
+        
     }
 }
