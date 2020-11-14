@@ -21,14 +21,18 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - Vector1_61533595: 0
     - Vector1_EE8E7FF3: 1
     - _Addition: 0.2
     - _CellDensity: 0.14
+    - _CellDensity2: 0.01
     - _Displacement: 5.45
     - _EmissionPower: 1
     - _Power: 5.5
     - _SecondaryStrength: 4.47
+    - _Smoothness: 0
     m_Colors:
     - Color_30C4EA44: {r: 0.18390886, g: 0.19725648, b: 0.38679248, a: 0}
+    - Color_BD00C9AA: {r: 0, g: 1, b: 0.6144519, a: 0}
     - _PrimaryColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
