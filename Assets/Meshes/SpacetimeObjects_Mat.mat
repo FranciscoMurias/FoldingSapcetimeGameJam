@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Galaxy_Mat
+  m_Name: SpacetimeObjects_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 0c99411fdc7425f489d7149d9ac06065,
     type: 3}
   m_ShaderKeywords: 
@@ -42,9 +42,9 @@ Material:
     - Vector1_61533595: 1.54
     - Vector1_EE8E7FF3: 3.55
     - _Addition: 0.2
-    - _CellDensity: 0.14
+    - _CellDensity: 2.64
     - _CellDensity2: 0.01
-    - _Displacement: 5.45
+    - _Displacement: 0.64
     - _EmissionPower: 1.14
     - _Power: 5.5
     - _SecondaryStrength: 20.48
