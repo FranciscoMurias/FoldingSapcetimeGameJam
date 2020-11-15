@@ -25,6 +25,8 @@ public class FlockAgent : MonoBehaviour
     private int smallShotMax = 5;
     private int smallShotCounter = 0;
 
+    public AudioSource firingSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,7 @@ public class FlockAgent : MonoBehaviour
             if (Time.time > nextShot)
             {
                 ShootProjectile();
+                firingSound.Play();
                 nextShot = Time.time + shootRate;
             }
         }

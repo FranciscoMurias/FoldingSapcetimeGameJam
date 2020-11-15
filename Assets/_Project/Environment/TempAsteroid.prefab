@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3099134196381314865}
   - component: {fileID: 1417061490826397221}
   - component: {fileID: 4079464565716791341}
-  - component: {fileID: 6445345811657864248}
   - component: {fileID: 4034246660292779516}
   - component: {fileID: 8269128178313994017}
+  - component: {fileID: 4346635672472396364}
   m_Layer: 12
   m_Name: TempAsteroid
   m_TagString: Untagged
@@ -84,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6445345811657864248
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2896278027106933417}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4034246660292779516
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,3 +112,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed9b5506bbb4754dafae40e538dc597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &4346635672472396364
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896278027106933417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4508274075034141448, guid: 6c9020f172672f74da6de60632e9447d, type: 3}

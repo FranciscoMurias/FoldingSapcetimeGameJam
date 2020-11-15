@@ -19,6 +19,8 @@ public class PlayerSpaceshipController : MonoBehaviour
     public GameObject onDeathParticles;
     public GameObject onDeathPanel;
 
+    public AudioSource firingSound;
+
     void FixedUpdate()
     {
         MoveSpaceship();
@@ -62,6 +64,7 @@ public class PlayerSpaceshipController : MonoBehaviour
             if(Time.time > nextShot)
             {
                 ShootProjectile();
+                firingSound.Play();
                 nextShot = Time.time + data.shootRate;
             }
         }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerAggressiveBehavior
   m_EditorClassIdentifier: 
   filter: {fileID: 11400000, guid: 4319763638cedd249ae89c6650381c9b, type: 2}
+  searchRadius: 200
