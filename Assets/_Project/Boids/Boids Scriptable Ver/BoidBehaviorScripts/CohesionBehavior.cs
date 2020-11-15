@@ -14,6 +14,7 @@ public class CohesionBehavior : FilteredFlockBehavior
         //add all points & average
         Vector3 cohesionMove = Vector3.zero;
 
+
         List<Transform> filteredContext = (filter == null) ? context : filter.Filter(thisAgent, context);
 
         foreach (Transform c in filteredContext)

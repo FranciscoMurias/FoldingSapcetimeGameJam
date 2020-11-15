@@ -10,6 +10,8 @@ TagManager:
   - Player_Laser
   - Projectile_LaserBolt
   - Water
+  - Space
+  - Asteroid
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - Terrain
   - Obstacle
   - Player
-  - 
+  - Asteroid
   - 
   - 
   - 

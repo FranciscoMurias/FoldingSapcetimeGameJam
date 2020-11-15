@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Mime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
@@ -17,6 +18,9 @@ public class EnemyManager : MonoBehaviour
     public Flock[] flockList;
 
     public TextMeshProUGUI enemyListNum;
+    public TextMeshProUGUI loseWinPanelText;
+
+    private string loseWinText = "You outlasted 0 enemies!\nBetter luck next time!";
 
     //scriptable object for 
     //num enemies left - new shrink rate - bool for if applied yet or not
@@ -30,6 +34,12 @@ public class EnemyManager : MonoBehaviour
         {
             f.enemyManagerRef = this;
         }
+
+        int aggressiveShips = Random.Range(45, 70);
+        int cowardShips = 99 - aggressiveShips;
+
+        flockList[0].startingCount = aggressiveShips;
+        flockList[1].startingCount = cowardShips;
     }
 
     void Awake()
@@ -44,6 +54,8 @@ public class EnemyManager : MonoBehaviour
         //look through list to see if we need to modify 
 
         //modify shrink rate if it hasn't been applied yet
+
+        
     }
 
     public int GetNumEnemiesAlive()
@@ -57,9 +69,41 @@ public class EnemyManager : MonoBehaviour
         enemyListNum.text = numEnemies.ToString();
     }
 
+    public void CheckForBarrierUpdate()
+    {
+        foreach (BarrierShrinkData shrinkData in barrierShrinkInfo)
+        {
+            if (!shrinkData.hasBeenApplied() && numEnemies <= shrinkData.enemiesLeft)
+            {
+                Debug.Log("Shrink data null: " + (shrinkData == null).ToString());
+                shrinkData.applyShrinkData();
+                barrierRef.ApplyShrinkRate(shrinkData.shrinkRate);
+
+                //break out early if we already encountered new rate
+                break;
+            }
+        }
+    }
+
     public void AddToEnemyList(GameObject obj)
     {
         enemyList.Add(obj);
+    }
+
+    public void GetFinalText()
+    {
+        string newLoseText = "";
+
+        if (numEnemies > 0)
+        {
+            newLoseText = "You outlasted " + (99 - numEnemies) + " enemies!\nBetter luck next time!";
+        }
+        else
+        {
+            newLoseText = "You outlasted the competition!\nGood job!";
+        }
+
+        loseWinPanelText.text = newLoseText;
     }
 
     public void GetEnemyDeathNotification(GameObject obj)
@@ -69,20 +113,10 @@ public class EnemyManager : MonoBehaviour
         {
             enemyList.Remove(obj);
             numEnemies = enemyList.Count;
-            
+
             //check if this triggers any barrier shrink increases w/ new numEnemies
 
-            foreach (BarrierShrinkData shrinkData in barrierShrinkInfo)
-            {
-                if (!shrinkData.hasBeenApplied() && numEnemies <= shrinkData.enemiesLeft)
-                {
-                    shrinkData.applyShrinkData();
-                    barrierRef.ApplyShrinkRate(shrinkData.shrinkRate);
-
-                    //break out early if we already encountered new rate
-                    break;
-                }
-            }
+            CheckForBarrierUpdate();
 
             enemyListNum.text = numEnemies.ToString();
 

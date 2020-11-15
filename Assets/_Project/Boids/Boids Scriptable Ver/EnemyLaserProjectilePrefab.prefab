@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2895155639091036827}
   - component: {fileID: -936739694987886522}
   m_Layer: 0
-  m_Name: Prefab_Projectile_Laser
+  m_Name: EnemyLaserProjectilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 8104e2b44940e3445b695422c14b40e4, type: 2}
   hittableTags:
+  - Player
   - Enemy
 --- !u!1 &8947639800086150646
 GameObject:
@@ -149,7 +150,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9bf2460ce472cdd4da0720f6976ff258, type: 2}
+  - {fileID: 2100000, guid: 0d68bf8f5fcf823408393fcc0b8dd040, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

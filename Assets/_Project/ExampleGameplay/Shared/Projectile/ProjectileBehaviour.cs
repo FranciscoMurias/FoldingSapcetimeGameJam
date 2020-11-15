@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     [Header("Settings")]
     public ProjectileData data;
+
+    public string[] hittableTags;
 
     void OnEnable()
     {
@@ -19,15 +22,23 @@ public class ProjectileBehaviour : MonoBehaviour
         if (Physics.Linecast(tempPos, transform.position, out RaycastHit hitInfo, data.layerMask))
         {
             RemoveProjectile();
-            if (hitInfo.transform.CompareTag("Enemy") && hitInfo.transform.TryGetComponent(out Damageable damageable))
+
+            foreach (String s in hittableTags)
             {
-                Debug.Log("Applying damage");
-                damageable.ApplyDamage(new Damageable.DamageMessage()
+                if (hitInfo.transform.CompareTag(s))
                 {
-                    amount = 2,
-                    damageSource = transform.position
-                });
+                    if (hitInfo.transform.TryGetComponent(out Damageable damageable))
+                    {
+                        Debug.Log("Applying damage");
+                        damageable.ApplyDamage(new Damageable.DamageMessage()
+                        {
+                            amount = 2,
+                            damageSource = transform.position
+                        });
+                    }
+                }
             }
+
         }
 
     }

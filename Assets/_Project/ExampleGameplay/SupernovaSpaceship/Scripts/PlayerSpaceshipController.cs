@@ -16,6 +16,9 @@ public class PlayerSpaceshipController : MonoBehaviour
     private float nextShot = 0.0f;
     public Transform shipModel;
 
+    public GameObject onDeathParticles;
+    public GameObject onDeathPanel;
+
     void FixedUpdate()
     {
         MoveSpaceship();
@@ -39,6 +42,13 @@ public class PlayerSpaceshipController : MonoBehaviour
         VisualSpaceshipTurn();
     }
 
+    public void OnDeath()
+    {
+        Instantiate(onDeathParticles, gameObject.transform.position, Quaternion.identity);
+        onDeathPanel.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
     void VisualSpaceshipTurn()
     {
         shipModel.localEulerAngles = new Vector3(data.steeringInput.x * data.leanAmount_Y
@@ -59,12 +69,10 @@ public class PlayerSpaceshipController : MonoBehaviour
 
     void ShootProjectile()
     {
-        
         GameObject newProjectile = projectileObjectPool.GetPooledObject();
         newProjectile.transform.position = projectileSpawnTransform.position;
         newProjectile.transform.rotation = projectileSpawnTransform.rotation;
         newProjectile.SetActive(true);
-        
     }
 
 

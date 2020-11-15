@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2587986157230338716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7239572810062082150}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7239572810062082150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587986157230338716}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.35000038, z: 1.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6280100164767740989}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3585783059694761501
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,9 +363,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6280100164767740989}
-  - component: {fileID: 1555112037142009640}
   - component: {fileID: 6315779602163053998}
   - component: {fileID: 5119732916684897514}
+  - component: {fileID: 3623797178191157022}
+  - component: {fileID: 1264007187204352477}
   m_Layer: 0
   m_Name: FlockingSpaceship
   m_TagString: Enemy
@@ -359,22 +390,10 @@ Transform:
   - {fileID: 8892141762417690508}
   - {fileID: 7119902914046691896}
   - {fileID: 8403137934775473525}
+  - {fileID: 7239572810062082150}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1555112037142009640
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7024555538835605038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.5
-  m_Center: {x: 0, y: 0, z: -0.75}
 --- !u!114 &6315779602163053998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4f4ee9fb4beaa499ae2977d3a0af53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionParticles: {fileID: 9120341656545251620, guid: 4a1890793c811124a88fbaa5265eae7c,
+    type: 3}
   managerRef: {fileID: 0}
+  projectileObjectPool: {fileID: 3623797178191157022}
+  projectileSpawnTransform: {fileID: 7239572810062082150}
 --- !u!114 &5119732916684897514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +455,32 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onDamageMessageReceivers: []
+--- !u!114 &3623797178191157022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024555538835605038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b7a0bfb79784449885c44cb1abf719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 0c93ca3cc2dd48a42924ddd1cc8fab39, type: 2}
+--- !u!65 &1264007187204352477
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024555538835605038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.41, z: 2.77}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9011972546264666081
 GameObject:
   m_ObjectHideFlags: 0

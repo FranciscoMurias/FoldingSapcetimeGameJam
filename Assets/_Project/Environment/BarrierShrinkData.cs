@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Environment/BarrierData")]
 public class BarrierShrinkData : ScriptableObject
 {
     public int enemiesLeft;

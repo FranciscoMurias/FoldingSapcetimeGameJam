@@ -16,7 +16,12 @@ public class AsteroidSpawner : MonoBehaviour
 
         for (int i = 0; i < numAsteroids; i++)
         {
-            Vector3 randomPoint = Random.insideUnitSphere * (Random.Range(-400f, 400f));
+            Vector3 randomPoint = Random.insideUnitSphere;
+
+            randomPoint.x *= (Random.Range(-400f, 400f));
+            randomPoint.y *= (Random.Range(-400f, 400f));
+            randomPoint.z *= (Random.Range(-400f, 400f));
+
             Vector3 randVelocity = Random.insideUnitSphere * (Random.Range(-10f, 10f));
             
             GameObject asteroid = Instantiate(asteroidPrefab, randomPoint, Random.rotation);
