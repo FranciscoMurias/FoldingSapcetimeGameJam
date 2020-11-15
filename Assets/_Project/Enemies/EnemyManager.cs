@@ -20,6 +20,10 @@ public class EnemyManager : MonoBehaviour
     public TextMeshProUGUI enemyListNum;
     public TextMeshProUGUI loseWinPanelText;
 
+    public int[] enemiesLeft;
+    public float[] shrinkRate;
+    bool[] applied;
+
     private string loseWinText = "You outlasted 0 enemies!\nBetter luck next time!";
 
     //scriptable object for 
@@ -40,6 +44,14 @@ public class EnemyManager : MonoBehaviour
 
         flockList[0].startingCount = aggressiveShips;
         flockList[1].startingCount = cowardShips;
+
+        int shrinkCount = enemiesLeft.Length;
+        applied = new bool[shrinkCount];
+
+        for (int i = 0; i < applied.Length; i++)
+        {
+            applied[i] = false;
+        }
     }
 
     void Awake()
@@ -55,7 +67,6 @@ public class EnemyManager : MonoBehaviour
 
         //modify shrink rate if it hasn't been applied yet
 
-        
     }
 
     public int GetNumEnemiesAlive()
@@ -71,16 +82,15 @@ public class EnemyManager : MonoBehaviour
 
     public void CheckForBarrierUpdate()
     {
-        foreach (BarrierShrinkData shrinkData in barrierShrinkInfo)
+        for (int i = 0; i < enemiesLeft.Length; i++)
         {
-            if (!shrinkData.hasBeenApplied() && numEnemies <= shrinkData.enemiesLeft)
+            if (!applied[i] && numEnemies <= enemiesLeft[i])
             {
-                Debug.Log("Shrink data null: " + (shrinkData == null).ToString());
-                shrinkData.applyShrinkData();
-                barrierRef.ApplyShrinkRate(shrinkData.shrinkRate);
+                applied[i] = true;
+                
 
-                //break out early if we already encountered new rate
-                break;
+
+                barrierRef.ApplyShrinkRate(shrinkRate[i]);
             }
         }
     }

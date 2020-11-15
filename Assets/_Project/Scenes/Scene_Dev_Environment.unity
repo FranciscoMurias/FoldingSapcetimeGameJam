@@ -6281,7 +6281,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1cb9e313b281a434689cb75688ec9fbd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8246,7 +8246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numEnemies: 0
-  barrierRef: {fileID: 0}
+  barrierRef: {fileID: 1486306319}
   barrierShrinkInfo:
   - {fileID: 11400000, guid: b96a417c1bf2ba2429250d06112fd2ee, type: 2}
   - {fileID: 11400000, guid: 3781a15c61ec2844ba8efb1af397b9b1, type: 2}
@@ -8259,6 +8259,13 @@ MonoBehaviour:
   - {fileID: 1725471070}
   enemyListNum: {fileID: 437445630}
   loseWinPanelText: {fileID: 826113183}
+  enemiesLeft: 5a00000041000000320000002800000014000000
+  shrinkRate:
+  - 1
+  - 1.5
+  - 2
+  - 4
+  - 5
 --- !u!4 &1155805247
 Transform:
   m_ObjectHideFlags: 0
