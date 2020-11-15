@@ -26,11 +26,14 @@ public class Flock : MonoBehaviour
 
     private float sqrAvoidanceRad;
 
+    public EnemyManager enemyManagerRef;
     public float SqrAvoidanceRad { get { return sqrAvoidanceRad; } }
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Flock start");
+
         sqrMaxSpeed = maxSpeed * maxSpeed;
         sqrNeighborRad = neighborRadius* neighborRadius;
         sqrAvoidanceRad = sqrNeighborRad * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -45,8 +48,14 @@ public class Flock : MonoBehaviour
             );
 
             newAgent.name = "Agent " + i;
+            newAgent.managerRef = enemyManagerRef;
+            newAgent.initialize(this);
             agents.Add(newAgent);
+            
+            enemyManagerRef.AddToEnemyList(newAgent.gameObject);
         }
+
+        enemyManagerRef.ForceEnemyDisplayUpdate();
     }
 
     // Update is called once per frame
@@ -54,8 +63,10 @@ public class Flock : MonoBehaviour
     {
         foreach (FlockAgent agent in agents)
         {
-            List<Transform> context = GetNearbyObjects(agent);
+            if (agent.gameObject.activeSelf == false)
+                continue;
 
+            List<Transform> context = GetNearbyObjects(agent);
 
             //FOR DEMO ONLY
             //agent.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.Lerp(Color.white, Color.red, context.Count/6f));
@@ -85,5 +96,10 @@ public class Flock : MonoBehaviour
         }
 
         return context;
+    }
+
+    public List<FlockAgent> GetBoids()
+    {
+        return agents;
     }
 }

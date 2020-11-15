@@ -21,6 +21,7 @@ public class ProjectileBehaviour : MonoBehaviour
             RemoveProjectile();
             if (hitInfo.transform.CompareTag("Enemy") && hitInfo.transform.TryGetComponent(out Damageable damageable))
             {
+                Debug.Log("Applying damage");
                 damageable.ApplyDamage(new Damageable.DamageMessage()
                 {
                     amount = 2,

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarrierShrinkage : MonoBehaviour
 {
-    private float shrinkRate;
+    private float shrinkRate = 0.0f;
     
 
 

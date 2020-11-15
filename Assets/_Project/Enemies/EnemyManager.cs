@@ -1,35 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-
     [SerializeField] private int numEnemies;
     
     [SerializeField] private BarrierShrinkage barrierRef;
     public List<BarrierShrinkData> barrierShrinkInfo = new List<BarrierShrinkData>();
 
-    
+    public List<GameObject> enemyList = new List<GameObject>();
 
-    public List<GameObject> enemyList;
+    public Flock[] flockList;
 
-    
-    
+    public TextMeshProUGUI enemyListNum;
+
     //scriptable object for 
     //num enemies left - new shrink rate - bool for if applied yet or not
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < numEnemies; i++)
-        {
-            GameObject enemy = Instantiate(enemyPrefab);
-            enemyList.Add(enemy);
-        }
-        
+        Debug.Log("Enemy manager start");
 
+        foreach (Flock f in flockList)
+        {
+            f.enemyManagerRef = this;
+        }
+    }
+
+    void Awake()
+    {
+        //load up enemy list
+        
     }
 
     // Update is called once per frame
@@ -43,6 +49,17 @@ public class EnemyManager : MonoBehaviour
     public int GetNumEnemiesAlive()
     {
         return numEnemies;
+    }
+
+    public void ForceEnemyDisplayUpdate()
+    {
+        numEnemies = enemyList.Count;
+        enemyListNum.text = numEnemies.ToString();
+    }
+
+    public void AddToEnemyList(GameObject obj)
+    {
+        enemyList.Add(obj);
     }
 
     public void GetEnemyDeathNotification(GameObject obj)
@@ -66,6 +83,8 @@ public class EnemyManager : MonoBehaviour
                     break;
                 }
             }
+
+            enemyListNum.text = numEnemies.ToString();
 
         }
             
