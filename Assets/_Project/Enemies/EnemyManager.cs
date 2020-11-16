@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     public Flock[] flockList;
 
     public TextMeshProUGUI enemyListNum;
-    public TextMeshProUGUI loseWinPanelText;
+    public TextMeshProUGUI loseWinPanelText;    
 
     public int[] enemiesLeft;
     public float[] shrinkRate;
